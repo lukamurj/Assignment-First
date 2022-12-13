@@ -6,41 +6,45 @@ namespace Assignment_1
     {
         static void Main(string[] args)
         {
-            int[] arr = new int[10];
-            InputTenNum(arr);
-            SortOutNum(arr);
-            FindTheRange(arr);
-            PrintNum(arr);
-            SumOfNum(arr);
+            var arr = new int[10];
+            AddArrayNumbers(arr);
+            SortArray(arr);
+            RangeArray(arr);
+            PrintArray(arr);
+            SumArray(arr);
         }
 
-        static void SumOfNum(int[] array)
+        static void SumArray(int[] array)
         {
             int sum = array[0];
-            for(int a = 1; a < array.Length; a++)
+            for(int i = 1; i < array.Length; i++)
             {
-                sum += array[a];
+                sum += array[i];
             }
             Console.WriteLine("The sum of the numbers in the array is " + sum);
         }
 
-        static void PrintNum(int[] array)
+        static void PrintArray(int[] array)
         {
-            Console.Write("Odd numbers and even numbers, which divide by 3, are: ");
-            for(int a = 0; a < array.Length; a++)
+            for(int i = 0; i < array.Length; i++)
             {
-                if(array[a] % 2 == 1)
-                {
-                    Console.Write(array[a] + " ");
-                }else if(array[a] % 3 == 0)
-                {
-                    Console.Write(array[a] + " ");
+                //if(array[i] % 2 == 1)
+                //{
+                //    Console.Write(array[i] + " ");
+                //}else if(array[i] % 3 == 0)
+                //{
+                //    Console.Write(array[i] + " ");
+                //}
+                if (array[i] % 2 == 0 && array[i] % 3 == 0) { 
+                    Console.Write("luwia da samis jeradi" + array[i] + " "); 
+                } else if (array[i] % 2 == 1) { 
+                    Console.Write("Kentia" + array[i] + " "); 
                 }
             }
             Console.WriteLine("\n");
         }
 
-        static void FindTheRange(int[] array)
+        static void RangeArray(int[] array)
         {
             int NumMin = array[0];
             int NumMax = array[0];
@@ -59,29 +63,30 @@ namespace Assignment_1
             Console.WriteLine();
         }
 
-        static void SortOutNum(int[] array)
+        static void SortArray(int[] array)
         {
-            for(int a = 0; a < array.Length - 1; a++)
+            int temp = 0;
+            for (int j = 0; j < array.Length - 1; j++)
             {
-                for(int i = a + 1; i < array.Length - 1; i++)
+                for(int i = j + 1; i < array.Length - 1; i++)
                 {
-                    if(array[a] > array[i])
+                    if(array[j] > array[i])
                     {
-                        int Num = array[a];
-                        array[a] = array[i];
-                        array[i] = Num;
+                        temp = array[j];
+                        array[j] = array[i];
+                        array[i] = temp;
                     }
                 }
             }
         }
 
-        static void InputTenNum(int[] array)
+        static void AddArrayNumbers(int[] array)
         {
             Console.WriteLine("Enter 10 numbers:");
-            for(int a = 0; a < array.Length; a++)
+            for(int i = 0; i < array.Length; i++)
             {
-                Console.Write(a + 1 + ". ");
-                array[a] = int.Parse(Console.ReadLine());
+                Console.Write(i + 1 + ". ");
+                array[i] = Convert.ToInt32(Console.ReadLine());
             }
             Console.WriteLine();
         }
